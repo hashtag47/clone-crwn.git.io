@@ -1,0 +1,11 @@
+{
+  "name": "clone-crwn.git.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hashtag47/clone-crwn.git.io.git",
+  "author": "ZENG <74520775+hashtag47@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "sass-embedded": "^1.89.0"
+  }
+}
