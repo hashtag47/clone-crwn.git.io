@@ -36,7 +36,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   console.log(userDocRef);
 
   const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot);
+  console.log(userSnapshot); // prexisted instance from DocumentReference Object
   // console.log(userSnapshot.exists());
 
   // if user data does not exist
