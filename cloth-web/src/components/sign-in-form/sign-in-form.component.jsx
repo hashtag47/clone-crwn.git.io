@@ -7,7 +7,7 @@ import {
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 
-import { UserContext } from "../../contexts/user.context";
+// import { UserContext } from "../../contexts/user.context";
 
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
@@ -23,13 +23,17 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const { setCurrentUser } = useContext(UserContext);
+  // const { setCurrentUser } = useContext(UserContext);
 
   console.log(formFields);
 
   const signInWithGoogle = async () => {
-    const response = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(response.user);
+    // const response =
+    await signInWithGooglePopup();
+    // In my opinion, if we don't use Firebase to automatically offer us the onAuthChange method
+    // We should manually use useContext line by line to control how the authentication flow works
+    // setCurrentUser(response.user);
+    // await createUserDocumentFromAuth(response.user);
   };
 
   const handleSubmit = async (event) => {
@@ -44,7 +48,7 @@ const SignInForm = () => {
         email,
         password
       );
-      setCurrentUser(user);
+      // setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
