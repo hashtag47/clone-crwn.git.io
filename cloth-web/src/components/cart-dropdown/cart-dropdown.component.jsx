@@ -6,10 +6,16 @@ import { CartContext } from "../../contexts/cart.context";
 import Button from "../../components/button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 
+import { Link } from "react-router-dom";
+
 import "./cart-dropdown.styles.scss";
 
 const CartDropDown = () => {
-  const { cartItems } = useContext(CartContext);
+  const { setIsCartOpen, cartItems } = useContext(CartContext);
+
+  const handleBtnClick = () => {
+    setIsCartOpen(false);
+  };
 
   return (
     <div className="cart-dropdown-container">
@@ -18,7 +24,11 @@ const CartDropDown = () => {
           <CartItem key={item.id} cartItem={item} />
         ))}
       </div>
-      <Button buttonType="inverted">GO TO CHECKOUT</Button>
+      <Link to="/checkout">
+        <Button buttonType="inverted" onClick={handleBtnClick}>
+          GO TO CHECKOUT
+        </Button>
+      </Link>
     </div>
   );
 };
