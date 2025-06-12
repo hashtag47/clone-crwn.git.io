@@ -6,12 +6,18 @@ import { CartContext } from "../../contexts/cart.context";
 import Button from "../../components/button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./cart-dropdown.styles.scss";
 
 const CartDropDown = () => {
   const { setIsCartOpen, cartItems } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const goToCheckoutHandler = () => {
+    navigate("/checkout");
+  };
 
   const handleBtnClick = () => {
     setIsCartOpen(false);
@@ -24,11 +30,17 @@ const CartDropDown = () => {
           <CartItem key={item.id} cartItem={item} />
         ))}
       </div>
-      <Link to="/checkout">
-        <Button buttonType="inverted" onClick={handleBtnClick}>
-          GO TO CHECKOUT
-        </Button>
-      </Link>
+      {/* <Link to="/checkout"> */}
+      <Button
+        buttonType="inverted"
+        onClick={() => {
+          handleBtnClick();
+          goToCheckoutHandler();
+        }}
+      >
+        GO TO CHECKOUT
+      </Button>
+      {/* </Link> */}
     </div>
   );
 };
